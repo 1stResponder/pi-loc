@@ -1,15 +1,17 @@
+
 # Pi-Loc
 ## Auto Position Reporter Headless for Raspberry Pi
 
-Basic requirements: python, gpsd, gpsd-clients, python-gps, python-pip, dnsutils, vim, supervisor, git
+Basic requirements: 
+* python, gpsd, gpsd-clients, python-gps, python-pip, dnsutils, vim, supervisor, git
 
-To install:
-apt-get the above packages
-configure gpsd (conf file in repo)
-download code and put somewhere logical (/opt is usually a good choice)
-configure supervisor (pi-loc.conf in repo)
-update-rc.d supervisor defaults
-Set it and forget it #ronco
+## Installation
+1. apt-get the above packages
+2. Configure gpsd (conf file in repo)
+3. Download code and put somewhere logical (/opt is usually a good choice)
+4. Configure supervisor (pi-loc.conf in repo)
+5. Update-rc.d supervisor defaults
+6. Set it and forget it
 
 ## Configuring Logging
 Pi-loc uses a s3 bucket for ease of log access.  To enable this logging you must have an AWS s3 bucket set up and the proper credentials need to be set within the code.
@@ -69,15 +71,17 @@ run mount
 /dev/mmcblk0p2 on / type ext4 (ro,noatime,data=ordered) <- note ro for /
 /dev/mmcblk0p1 on /boot type vfat (ro,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,errors=remount-ro) <- note ro for /boot
 run service supervisor status to make sure supervisor is running
-Check to make sure pi-loc is logging to /var/log
+Check to make sure pi-loc is logging to: /var/log
 
 ## Switching to/from Read-Only FS
 
 To remount fs as read/write:
-mount -o remount,rw /
-To remount fs as read-only:
-mount -o remount,ro /
 
+    mount -o remount,rw /
+
+To remount fs as read-only:
+
+    mount -o remount,ro /
 
 ## **DISCLAIMER OF LIABILITY NOTICE**:
 
